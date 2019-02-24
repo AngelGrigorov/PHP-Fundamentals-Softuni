@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    <section class="home">
+        <h2>Tasks:</h2>
+        {% for task in tasks %}
+            <article>
+                <h3>{{ task.title }}</h3>
+                <p>{{ task.comments }}</p>
+                <div>
+                    <a href="{{ path('delete', {id: task.id}) }}" class="fas fa-trash-alt"></a>
+                    <a href="{{ path('edit', {id: task.id}) }}" class="fas fa-edit"></a>
+                </div>
+            </article>
+        {% endfor %}
+        <a id="create-button" href="{{ path('create') }}">Create New</a>
+        {#<button>Create New</button>#}
+    </section>
+{% endblock %}

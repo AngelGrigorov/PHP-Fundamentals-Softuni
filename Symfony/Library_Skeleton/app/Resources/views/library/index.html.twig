@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    <div class="wrapper">
+        <div class="button-holder">
+            <a type="button" href="{{ path('create') }}" class="button">ADD A NEW BOOK</a>
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="book-label">TITLE</div>
+                <div class="book-label">AUTHOR</div>
+                <div class="book-label">PRICE</div>
+                <div class="actions-label">ACTIONS</div>
+            </div>
+            <div class="main">
+                {% for book in books %}
+                    <div class="book">
+                        <div class="book-title">
+                            {{ book.title }}
+                        </div>
+                        <div class="book-item">
+                            {{ book.author }}
+                        </div>
+                        <div class="book-item">
+                            {{ book.price }}
+                        </div>
+                        <div class="project-actions">
+                            <a type="button" href="{{ path('edit', {id: book.id}) }}" class="bookbutton">Edit</a>
+                            <a type="button" href="{{ path('delete', {id: book.id}) }}" class="bookbutton">Remove</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

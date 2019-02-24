@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    <div class="wrapper">
+        <form class="book-create" action="{{ path('create') }}" method="post">
+            <div class="create-header">
+                ADD A NEW BOOK
+            </div>
+            <div class="create-title">
+                <div class="create-title-label">TITLE</div>
+                <input type="text" class="create-title-content" name="book[title]"/>
+            </div>
+            <div class="create-bookitem">
+                <div class="create-bookitem-label">AUTHOR</div>
+                <input type="text" class="create-bookitem-content" name="book[author]">
+            </div>
+            <div class="create-bookitem">
+                <div class="create-bookitem-label">PRICE</div>
+                <input type="number" min="1" step="any" class="create-bookitem-content" name="book[price]"/>
+            </div>
+            <div class="create-button-holder">
+                <button type="submit" class="button">ADD BOOK</button>
+                <a type="button" href="/" class="button">BACK</a>
+            </div>
+            {{ form_row(form._token) }}
+        </form>
+    </div>
+{% endblock %}

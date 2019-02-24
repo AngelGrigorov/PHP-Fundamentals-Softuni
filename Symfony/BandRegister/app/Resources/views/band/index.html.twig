@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    <section class="home">
+        <h2>Registered Bands:</h2>
+        {% for band in bands %}
+            <article>
+                <h3>{{ band.name}}</h3>
+                <p>{{ band.members }}</p>
+                <p>{{ band.honorarium }}$</p>
+                <p>{{ band.genre }}</p>
+                <div>
+                    <a href="{{ path('edit', {id: band.id}) }}" class="fas fa-edit"></a>
+                    <a href="{{ path('delete', {id: band.id}) }}" class="fas fa-trash-alt"></a>
+                </div>
+            </article>
+        {% endfor %}
+        <a id="create-button" href="{{ path('create') }}">Register Band</a>
+    </section>
+{% endblock %}

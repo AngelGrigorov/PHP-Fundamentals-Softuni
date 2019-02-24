@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    <div class="wrapper">
+        <form class="book-create" action="{{ path('delete', { id:book.id }) }}" method="post">
+            <div class="create-header">
+                REMOVE BOOK
+            </div>
+            <div class="create-title">
+                <div class="create-title-label">TITLE</div>
+                <input type="text" class="create-title-content" name="book[title]" value="{{ book.title }}"
+                       disabled="disabled" readonly/>
+            </div>
+            <div class="create-bookitem">
+                <div class="create-bookitem-label">AUTHOR</div>
+                <input type="text" class="create-bookitem-content" name="book[author]" value="{{ book.author }}"
+                       disabled="disabled" readonly>
+            </div>
+            <div class="create-bookitem">
+                <div class="create-bookitem-label">PRICE</div>
+                <input type="number" min="1" class="create-bookitem-content" name="book[price]" disabled="disabled"
+                       value="{{ book.price }}" readonly/>
+            </div>
+            <div class="create-button-holder">
+                <button type="submit" class="button">Close Issue</button>
+                <a type="button" href="{{ path('homepage') }}" class="button">Back</a>
+            </div>
+            {{ form_row(form._token) }}
+        </form>
+    </div>
+{% endblock %}
